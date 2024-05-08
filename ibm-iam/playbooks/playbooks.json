@@ -1,0 +1,1787 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+      "@type": "WorkflowCollection",
+      "name": "Sample - IBM IAM - 1.0.0",
+      "description": "The IBM IAM Identity Service API is used to manage service IDs, API key identities, trusted profiles, account security settings and to create IAM access tokens for a user or service ID.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Ibm",
+        "ibm-iam"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "df51273b-a6f9-4de3-80f1-0a64663b45fb",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Returns the list of API key details for a given service or user IAM ID and account ID.",
+          "name": "Get API Keys By IAM ID & Account ID",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bf370e7f-59e9-4c3f-904f-bc13e2e03917",
+          "steps": [
+            {
+              "uuid": "bf370e7f-59e9-4c3f-904f-bc13e2e03917",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "6bac2c74-cf0b-4ab5-be08-dc3343d7510d",
+                "title": "IBM IAM: Get API Keys By IAM ID & Account ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "edad4be1-5461-4d83-9851-94341ef47a03",
+              "@type": "WorkflowStep",
+              "name": "Get API Keys By IAM ID & Account ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": "",
+                  "iam_id": "",
+                  "pagesize": "20",
+                  "pagetoken": "",
+                  "scope": "entity",
+                  "type_value": null,
+                  "sort": null,
+                  "order": "asc",
+                  "include_history": false
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "get_api_keys_by_iam_id_and_account_id",
+                "operationTitle": "Get API Keys By IAM ID & Account ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "f46790fe-8a79-4393-80e0-87e63bf6faa0",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get API Keys By IAM ID & Account ID",
+              "sourceStep": "/api/3/workflow_steps/bf370e7f-59e9-4c3f-904f-bc13e2e03917",
+              "targetStep": "/api/3/workflow_steps/edad4be1-5461-4d83-9851-94341ef47a03"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a2a44164-e64c-4fa4-bd2c-440c9c193d31",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Creates an API key for a UserID or service ID. Users can manage user API keys for themself, or service ID API keys for service IDs they have access to",
+          "name": "Create An API Key",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/8e72947b-80f1-4a50-b085-8107a6cadcda",
+          "steps": [
+            {
+              "uuid": "8e72947b-80f1-4a50-b085-8107a6cadcda",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "fdb94bb2-2576-451d-8709-e240c65ad6f1",
+                "title": "IBM IAM: Create An API Key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "a4bd15a7-eeaf-46f2-83f7-9ec0edd27f10",
+              "@type": "WorkflowStep",
+              "name": "Create An API Key",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": "",
+                  "name": "",
+                  "iam_id": "",
+                  "description": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "create_an_api_key",
+                "operationTitle": "Create An API Key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "65561815-0c1b-4945-ad1f-86aca2bd470c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create An API Key",
+              "sourceStep": "/api/3/workflow_steps/8e72947b-80f1-4a50-b085-8107a6cadcda",
+              "targetStep": "/api/3/workflow_steps/a4bd15a7-eeaf-46f2-83f7-9ec0edd27f10"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a61593f7-8503-4c89-b0c0-d2f9e8346955",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Returns the details of an API key by its value.",
+          "name": "Get API Key Details By Value",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/28a12ea4-0df8-4808-863b-b2f356677bd4",
+          "steps": [
+            {
+              "uuid": "28a12ea4-0df8-4808-863b-b2f356677bd4",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "3003b74c-0daa-4d10-a8f3-1dd82448040e",
+                "title": "IBM IAM: Get API Key Details By Value",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "83e364bd-4467-4f9d-a761-5be39ffc800a",
+              "@type": "WorkflowStep",
+              "name": "Get API Key Details By Value",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "iam_apiKey": "",
+                  "include_history": "false"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "get_api_key_details_by_value",
+                "operationTitle": "Get API Key Details By Value",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3b3dcc12-21c1-4ef6-b9ef-7661bdd90523",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get API Key Details By Value",
+              "sourceStep": "/api/3/workflow_steps/28a12ea4-0df8-4808-863b-b2f356677bd4",
+              "targetStep": "/api/3/workflow_steps/83e364bd-4467-4f9d-a761-5be39ffc800a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "ab1bf07e-b2c8-449e-a8e5-7874a5bd1751",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Returns the details of an API key",
+          "name": "Get API Key Details",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bf8f4756-247c-4819-85ad-71a28e448b2f",
+          "steps": [
+            {
+              "uuid": "bf8f4756-247c-4819-85ad-71a28e448b2f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "211e27af-8f8d-4058-aa2a-f688d5ebf1e5",
+                "title": "IBM IAM: Get API Key Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "d5edcc37-c6ac-4abc-a7cc-64c1d4a6efbd",
+              "@type": "WorkflowStep",
+              "name": "Get API Key Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "api_key_unique_id": "",
+                  "include_history": "false",
+                  "include_activity": "false"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "get_api_key_details",
+                "operationTitle": "Get API Key Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "1e4d9b9b-3007-4aee-8d7a-6cea8e4d001d",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get API Key Details",
+              "sourceStep": "/api/3/workflow_steps/bf8f4756-247c-4819-85ad-71a28e448b2f",
+              "targetStep": "/api/3/workflow_steps/d5edcc37-c6ac-4abc-a7cc-64c1d4a6efbd"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "17dbc874-bc1c-4d86-80de-d0f83d48458d",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Creates an API key for a UserID or service ID.",
+          "name": "Update API Key",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/a0104b4f-f700-43df-9c17-5ecab53a2dab",
+          "steps": [
+            {
+              "uuid": "a0104b4f-f700-43df-9c17-5ecab53a2dab",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "321a9784-41b5-4eca-9ae6-ecf7a5754700",
+                "title": "IBM IAM: Update API Key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c9dffebc-d82c-4e63-99c1-e93476b17574",
+              "@type": "WorkflowStep",
+              "name": "Update API Key",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "entity_tag": "",
+                  "api_key_unique_id": "",
+                  "name": "",
+                  "description": "",
+                  "support_sessions": "false",
+                  "action_when_leaked": "none"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "update_api_key",
+                "operationTitle": "Update API Key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d97708a0-aeba-4dea-a3a7-debead903a34",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update API Key",
+              "sourceStep": "/api/3/workflow_steps/a0104b4f-f700-43df-9c17-5ecab53a2dab",
+              "targetStep": "/api/3/workflow_steps/c9dffebc-d82c-4e63-99c1-e93476b17574"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "3fa2e1e0-7a72-4120-a27a-f64aebeaa99c",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Deletes an API key.",
+          "name": "Delete API Key",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ba25e110-a379-488e-b259-7599d40b5c85",
+          "steps": [
+            {
+              "uuid": "ba25e110-a379-488e-b259-7599d40b5c85",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "0cc0512f-1135-41fa-97e0-117899d3aaf1",
+                "title": "IBM IAM: Delete API Key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "7b2ac90a-0d62-4a6f-a72e-46cbde248042",
+              "@type": "WorkflowStep",
+              "name": "Delete API Key",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "api_key_unique_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "delete_api_key",
+                "operationTitle": "Delete API Key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "1122d014-d219-4535-9b39-bf25d5e6c354",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete API Key",
+              "sourceStep": "/api/3/workflow_steps/ba25e110-a379-488e-b259-7599d40b5c85",
+              "targetStep": "/api/3/workflow_steps/7b2ac90a-0d62-4a6f-a72e-46cbde248042"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e347238d-9cd4-45a1-994e-9d37d62bf6c4",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Lock an API key by ID.",
+          "name": "Lock API Key",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/18b06728-5998-4c29-80c8-634bc797fea0",
+          "steps": [
+            {
+              "uuid": "18b06728-5998-4c29-80c8-634bc797fea0",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "ae3157db-2820-4be3-800a-977941fbb42e",
+                "title": "IBM IAM: Lock API Key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "31cb17f9-1cc9-4b66-93d5-42fd3e688577",
+              "@type": "WorkflowStep",
+              "name": "Lock API Key",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "api_key_unique_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "lock_api_key",
+                "operationTitle": "Lock API Key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "cc9ca3b5-6773-4489-8d4c-29622ba6201c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Lock API Key",
+              "sourceStep": "/api/3/workflow_steps/18b06728-5998-4c29-80c8-634bc797fea0",
+              "targetStep": "/api/3/workflow_steps/31cb17f9-1cc9-4b66-93d5-42fd3e688577"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "aec1eb1e-a29b-4f27-863f-df148ec75029",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Un-Lock an API key by ID.",
+          "name": "UnLock API Key",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/cff3c352-696d-45ae-8bc4-3a5623ceff12",
+          "steps": [
+            {
+              "uuid": "cff3c352-696d-45ae-8bc4-3a5623ceff12",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "a18d35f6-6481-4261-9523-a29d12ab1781",
+                "title": "IBM IAM: UnLock API Key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "5f554f2e-88ea-4177-8af4-e738006e1a35",
+              "@type": "WorkflowStep",
+              "name": "UnLock API Key",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "api_key_unique_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "unlock_api_key",
+                "operationTitle": "UnLock API Key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "452b3642-9f53-471b-8049-227040b38918",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> UnLock API Key",
+              "sourceStep": "/api/3/workflow_steps/cff3c352-696d-45ae-8bc4-3a5623ceff12",
+              "targetStep": "/api/3/workflow_steps/5f554f2e-88ea-4177-8af4-e738006e1a35"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "71438675-b967-42da-a067-c61d39f0845a",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Disable an API key.",
+          "name": "Disable the API key",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/66666edc-77b8-4543-a2b0-6e9e32f5cfc3",
+          "steps": [
+            {
+              "uuid": "66666edc-77b8-4543-a2b0-6e9e32f5cfc3",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "013b069f-e7e0-42c4-81be-ce7bbf740948",
+                "title": "IBM IAM: Disable the API key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "896a2af1-04b2-47d4-a2ca-c302de2f4196",
+              "@type": "WorkflowStep",
+              "name": "Disable the API key",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "api_key_unique_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "disable_the_api_key",
+                "operationTitle": "Disable the API key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "329e2dda-9eb3-4cf8-8050-c142c81a448c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Disable the API key",
+              "sourceStep": "/api/3/workflow_steps/66666edc-77b8-4543-a2b0-6e9e32f5cfc3",
+              "targetStep": "/api/3/workflow_steps/896a2af1-04b2-47d4-a2ca-c302de2f4196"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "2ee46bd3-f97f-44ad-8e5b-b8299fc1840b",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Enable an API key.",
+          "name": "Enable the API key",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/dfdaf24b-4920-4cda-8ccf-e30435ceb6c3",
+          "steps": [
+            {
+              "uuid": "dfdaf24b-4920-4cda-8ccf-e30435ceb6c3",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "66e41304-8192-452f-8611-41d2cc8eb820",
+                "title": "IBM IAM: Enable the API key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "19f35f0d-4ba0-4f08-a94e-da6afafdea90",
+              "@type": "WorkflowStep",
+              "name": "Enable the API key",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "api_key_unique_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "enable_the_api_key",
+                "operationTitle": "Enable the API key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "11d84546-e716-40d6-8e3a-7d2ec9830ef0",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Enable the API key",
+              "sourceStep": "/api/3/workflow_steps/dfdaf24b-4920-4cda-8ccf-e30435ceb6c3",
+              "targetStep": "/api/3/workflow_steps/19f35f0d-4ba0-4f08-a94e-da6afafdea90"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "fef6cd87-61c4-4c6c-9bb6-caee4015bdb8",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Returns a list of service IDs. Users can manage user API keys for themself, or service ID API keys for service IDs they have access.",
+          "name": "List Service IDs By Name",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9bf68e3f-0f48-4f5c-a54e-f6cf79ddf9a3",
+          "steps": [
+            {
+              "uuid": "9bf68e3f-0f48-4f5c-a54e-f6cf79ddf9a3",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "522a380b-cde8-4bff-8cac-11b6acb0a1a6",
+                "title": "IBM IAM: List Service IDs By Name",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "50581199-b2ba-4878-a546-bae38d920ad6",
+              "@type": "WorkflowStep",
+              "name": "List Service IDs By Name",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": "",
+                  "name": "",
+                  "pagesize": "20",
+                  "pagetoken": "",
+                  "sort": null,
+                  "order": "asc",
+                  "include_history": false
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "list_service_id_by_name",
+                "operationTitle": "List Service IDs By Name",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3111e4bd-bf53-49c6-8361-3adab5de6162",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> List Service IDs By Name",
+              "sourceStep": "/api/3/workflow_steps/9bf68e3f-0f48-4f5c-a54e-f6cf79ddf9a3",
+              "targetStep": "/api/3/workflow_steps/50581199-b2ba-4878-a546-bae38d920ad6"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "159e21f1-90c1-415f-ad75-ee371811e4ad",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Returns a list of service IDs. Users can manage user API keys for themself, or service ID API keys for service IDs they have access.",
+          "name": "List Service IDs By Account ID",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7a25fe79-6d18-4e44-9681-ef951dbcf7a4",
+          "steps": [
+            {
+              "uuid": "7a25fe79-6d18-4e44-9681-ef951dbcf7a4",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "d5f723fe-7f77-4754-9041-9b8700e975e9",
+                "title": "IBM IAM: List Service IDs By Account ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c03fa8c3-9eb4-447b-a20f-ee4bb010f9fe",
+              "@type": "WorkflowStep",
+              "name": "List Service IDs By Account ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "list_service_id_by_account_id",
+                "operationTitle": "List Service IDs By Account ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "157f8bef-358e-47b2-8e7b-2cf4aac340a4",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> List Service IDs By Account ID",
+              "sourceStep": "/api/3/workflow_steps/7a25fe79-6d18-4e44-9681-ef951dbcf7a4",
+              "targetStep": "/api/3/workflow_steps/c03fa8c3-9eb4-447b-a20f-ee4bb010f9fe"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "4ce766c3-f483-4d77-95b7-559abb32207e",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Creates a service ID for an IBM Cloud account. Users can manage user API keys for themself, or service ID API keys for service IDs.",
+          "name": "Create A Service ID",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d4667e60-2698-44cf-bfc5-3b63a11d5f31",
+          "steps": [
+            {
+              "uuid": "d4667e60-2698-44cf-bfc5-3b63a11d5f31",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "4289a519-0f2a-4f8c-8e48-4d7b1e593ee2",
+                "title": "IBM IAM: Create A Service ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "2c490a27-1767-4e30-b021-f8f8dd4c9e3f",
+              "@type": "WorkflowStep",
+              "name": "Create A Service ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": "",
+                  "name": "",
+                  "description": "",
+                  "unique_instance_crns": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "create_a_service_id",
+                "operationTitle": "Create A Service ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "9337df73-135f-43f5-9dcb-b7dc7a312a6a",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create A Service ID",
+              "sourceStep": "/api/3/workflow_steps/d4667e60-2698-44cf-bfc5-3b63a11d5f31",
+              "targetStep": "/api/3/workflow_steps/2c490a27-1767-4e30-b021-f8f8dd4c9e3f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "929830ac-3246-4886-a253-ed9c7c28af39",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Updates properties of a service ID.",
+          "name": "Update Service ID",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b9340e12-803c-494d-8f35-965ba7307c17",
+          "steps": [
+            {
+              "uuid": "b9340e12-803c-494d-8f35-965ba7307c17",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "8384fd32-4c74-463f-b9bd-f89ff52208d6",
+                "title": "IBM IAM: Update Service ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "1df33b8f-aa78-4b3c-9413-37fb63be9be3",
+              "@type": "WorkflowStep",
+              "name": "Update Service ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "service_id": "",
+                  "name": "",
+                  "description": "",
+                  "unique_instance_crns": "",
+                  "entity_tag": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "update_service_id",
+                "operationTitle": "Update Service ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "35ce9531-9cd2-4af6-8983-0bc661c0d7ce",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Service ID",
+              "sourceStep": "/api/3/workflow_steps/b9340e12-803c-494d-8f35-965ba7307c17",
+              "targetStep": "/api/3/workflow_steps/1df33b8f-aa78-4b3c-9413-37fb63be9be3"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "2489be2d-de74-4b13-ae38-21654f17fe17",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Deletes a service ID and all API keys associated to it. Before deleting the service ID, all associated API keys are deleted. ",
+          "name": "Delete Service ID and Associated API keys",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b1bb6745-c42d-4953-83a6-a3a4c2f99bb3",
+          "steps": [
+            {
+              "uuid": "b1bb6745-c42d-4953-83a6-a3a4c2f99bb3",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "a24f9b1b-04d7-4c24-96c6-c6074799339c",
+                "title": "IBM IAM: Delete Service ID and Associated API keys",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "265ca3a6-8d1b-4309-bd87-a39e4b5cc6ce",
+              "@type": "WorkflowStep",
+              "name": "Delete Service ID and Associated API keys",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "service_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "delete_service_id_and_associated_api_keys",
+                "operationTitle": "Delete Service ID and Associated API keys",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "676e2274-9b6d-435a-8d81-d9a912baca69",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Service ID and Associated API keys",
+              "sourceStep": "/api/3/workflow_steps/b1bb6745-c42d-4953-83a6-a3a4c2f99bb3",
+              "targetStep": "/api/3/workflow_steps/265ca3a6-8d1b-4309-bd87-a39e4b5cc6ce"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "23b49f48-20b8-4849-935d-284772a5b4ca",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Locks a service ID by ID. Users can manage user API keys for themself, or service ID API keys for service IDs ",
+          "name": "Lock The Service ID",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c79c8ef3-d550-479a-8c63-4a9f821b5a48",
+          "steps": [
+            {
+              "uuid": "c79c8ef3-d550-479a-8c63-4a9f821b5a48",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "aed8b638-744c-4a08-8b16-6cc48bc4214b",
+                "title": "IBM IAM: Lock The Service ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "6b77d0a1-5ef1-4dcc-af8f-a9840c9d6c34",
+              "@type": "WorkflowStep",
+              "name": "Lock The Service ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "service_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "lock_service_id",
+                "operationTitle": "Lock The Service ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "c7575fc0-7f37-40d0-88e9-0bd149c00da0",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Lock The Service ID",
+              "sourceStep": "/api/3/workflow_steps/c79c8ef3-d550-479a-8c63-4a9f821b5a48",
+              "targetStep": "/api/3/workflow_steps/6b77d0a1-5ef1-4dcc-af8f-a9840c9d6c34"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "6b043535-8f7e-4ccc-87ea-bfc028d186b0",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Unlocks a service ID by ID. Users can manage user API keys for themself, or service ID API keys for service IDs ",
+          "name": "Unlock The Service ID",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/944273a9-de98-40ae-bfca-ee64415d0165",
+          "steps": [
+            {
+              "uuid": "944273a9-de98-40ae-bfca-ee64415d0165",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "c73ae35b-9636-42ad-a156-fcdd2ba97ea5",
+                "title": "IBM IAM: Unlock The Service ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ce4906f5-bd68-40d3-bf0a-c124c9288c13",
+              "@type": "WorkflowStep",
+              "name": "Unlock The Service ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "service_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "unlock_service_id",
+                "operationTitle": "Unlock The Service ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d59f7597-3ce9-4773-9e6f-b3c34a8df07f",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Unlock The Service ID",
+              "sourceStep": "/api/3/workflow_steps/944273a9-de98-40ae-bfca-ee64415d0165",
+              "targetStep": "/api/3/workflow_steps/ce4906f5-bd68-40d3-bf0a-c124c9288c13"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "c88c80cb-918a-4c5d-bce1-c95a9479f34f",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Returns the details of an account's configuration.",
+          "name": "Get Account Configurations",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/78e99602-54bf-4275-bb44-6bba5a699a4a",
+          "steps": [
+            {
+              "uuid": "78e99602-54bf-4275-bb44-6bba5a699a4a",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "685ebe52-ec96-436b-8bc0-335dad989d53",
+                "title": "IBM IAM: Get Account Configurations",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "79ab0882-4221-4412-bd0c-150bb8f2de74",
+              "@type": "WorkflowStep",
+              "name": "Get Account Configurations",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "get_account_configurations",
+                "operationTitle": "Get Account Configurations",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "8a878c9d-4c80-456b-95f1-364e268b0015",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Account Configurations",
+              "sourceStep": "/api/3/workflow_steps/78e99602-54bf-4275-bb44-6bba5a699a4a",
+              "targetStep": "/api/3/workflow_steps/79ab0882-4221-4412-bd0c-150bb8f2de74"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "8cd3c32b-3b62-4cca-864a-3dc9236e775a",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Allows a user to configure settings on their account with regards to MFA, MFA excemption list, session lifetimes, access control for creating new identities, and enforcing IP restrictions on token creation.",
+          "name": "Update Account Configurations",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/8c2521cd-52e0-42ee-b38e-4788c2c96d7b",
+          "steps": [
+            {
+              "uuid": "8c2521cd-52e0-42ee-b38e-4788c2c96d7b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "29c74ded-150e-4352-8aac-d3a5ca96d4bd",
+                "title": "IBM IAM: Update Account Configurations",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "122a29f9-5350-4693-a7d8-9fc830f22d3c",
+              "@type": "WorkflowStep",
+              "name": "Update Account Configurations",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "entity_tag": "",
+                  "account_id": "",
+                  "restrict_create_service_id": "NOT_SET",
+                  "restrict_create_platform_apikey": "NOT_SET",
+                  "allowed_ip_addresses": "",
+                  "mfa": "NONE_NO_ROPC",
+                  "user_mfa": "",
+                  "session_expiration_in_seconds": "NOT_SET",
+                  "session_invalidation_in_seconds": "NOT_SET",
+                  "max_sessions_per_identity": "NOT_SET",
+                  "system_access_token_expiration_in_seconds": "NOT_SET",
+                  "system_refresh_token_expiration_in_seconds.": "NOT_SET"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "update_account_configurations",
+                "operationTitle": "Update Account Configurations",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "1b2cad32-383e-4b5d-9091-b09a5a530fe7",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Account Configurations",
+              "sourceStep": "/api/3/workflow_steps/8c2521cd-52e0-42ee-b38e-4788c2c96d7b",
+              "targetStep": "/api/3/workflow_steps/122a29f9-5350-4693-a7d8-9fc830f22d3c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "2b53fac9-ddd8-4cdb-a3c9-899fa30eb129",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Trigger activity report for the account by specifying the account ID. It can take a few minutes to generate the report for retrieval.",
+          "name": "Trigger Activity Report For The Account",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4ec36aa5-b125-46df-b08b-d43853452f70",
+          "steps": [
+            {
+              "uuid": "4ec36aa5-b125-46df-b08b-d43853452f70",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "49e4f136-bf71-4cc7-8ea8-ea59f92b0a34",
+                "title": "IBM IAM: Trigger Activity Report For The Account",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "9da0236b-0fea-4297-91ef-921f210bc172",
+              "@type": "WorkflowStep",
+              "name": "Trigger Activity Report For The Account",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": "",
+                  "type": "inactive",
+                  "duration": "720"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "trigger_activity_report_for_the_account",
+                "operationTitle": "Trigger Activity Report For The Account",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "cf5e4d52-9e1d-4fce-b08d-ae192ec237eb",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Trigger Activity Report For The Account",
+              "sourceStep": "/api/3/workflow_steps/4ec36aa5-b125-46df-b08b-d43853452f70",
+              "targetStep": "/api/3/workflow_steps/9da0236b-0fea-4297-91ef-921f210bc172"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b6c24a23-2ee5-4ef1-b943-d2428c85e627",
+          "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
+          "triggerLimit": null,
+          "description": "Get activity report for the account by specifying the account ID and the reference that is generated by triggering the report. Reports older than a day are deleted when generating a new report.",
+          "name": "Get Activity Report For The Account",
+          "tag": "#IBM IAM",
+          "recordTags": [
+            "Ibm",
+            "ibm-iam"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4ece3b15-1c8a-4751-a3ce-abf702858c6e",
+          "steps": [
+            {
+              "uuid": "4ece3b15-1c8a-4751-a3ce-abf702858c6e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "4e4c2aaf-373d-4e8d-97a3-018c2cf5c08e",
+                "title": "IBM IAM: Get Activity Report For The Account",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "a9348553-a4d8-4e80-9da3-9a85fd5e8f33",
+              "@type": "WorkflowStep",
+              "name": "Get Activity Report For The Account",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "IBM IAM",
+                "config": "''",
+                "params": {
+                  "account_id": "",
+                  "reference": "latest"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-iam",
+                "operation": "get_activity_report_for_the_account",
+                "operationTitle": "Get Activity Report For The Account",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "756c8ec9-0731-46fb-9bc4-7e60ac47ac4a",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Activity Report For The Account",
+              "sourceStep": "/api/3/workflow_steps/4ece3b15-1c8a-4751-a3ce-abf702858c6e",
+              "targetStep": "/api/3/workflow_steps/a9348553-a4d8-4e80-9da3-9a85fd5e8f33"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
