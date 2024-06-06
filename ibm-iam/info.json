@@ -8,7 +8,7 @@
     "icon_large_name": "large.png",
     "cs_compatible": true,
     "cs_approved": false,
-    "category": "Authentication & Identity Management",
+    "category": "Identity and Access Management",
     "help_online": "https://github.com/jitesh-spryiq/connector-robtex/blob/develop/docs/IbmIamConnectorDoc.md",
     "configuration": {
         "fields": [
