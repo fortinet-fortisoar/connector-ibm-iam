@@ -9,7 +9,7 @@
     "cs_compatible": true,
     "cs_approved": false,
     "category": "Identity and Access Management",
-    "help_online": "https://github.com/jitesh-spryiq/connector-robtex/blob/develop/docs/IbmIamConnectorDoc.md",
+    "help_online": "",
     "configuration": {
         "fields": [
             {
