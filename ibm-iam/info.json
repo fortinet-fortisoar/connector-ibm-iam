@@ -1,0 +1,1414 @@
+{
+    "name": "ibm-iam",
+    "version": "1.0.0",
+    "label": "IBM IAM",
+    "description": "The IBM IAM Identity Service API is used to manage service IDs, API key identities, trusted profiles, account security settings and to create IAM access tokens for a user or service ID.",
+    "publisher": "spryIQ.co",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "cs_compatible": true,
+    "cs_approved": false,
+    "category": "Authentication & Identity Management",
+    "help_online": "https://github.com/jitesh-spryiq/connector-robtex/blob/develop/docs/IbmIamConnectorDoc.md",
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "name": "server_url",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "tooltip": "Specify the URL of the IBM IAM server to connect and perform automated operations.",
+                "description": "Specify the URL of the IBM IAM server to connect and perform automated operations.",
+                "placeholder": "e.g: https://iam.cloud.ibm.com or iam.cloud.ibm.com"
+            },
+            {
+                "title": "API key",
+                "type": "password",
+                "name": "api_key",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "tooltip": "Enter your IBM Cloud API key.",
+                "description": "Enter your IBM Cloud API key.",
+                "placeholder": "e.g: hwdd5HF_c968VXF8hL_JvL_SZu-10yc476ifC86mi7hq"
+            },
+            {
+                "title": "Verify SSL",
+                "name": "verify_ssl",
+                "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True.",
+                "type": "checkbox",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "value": true,
+                "tooltip": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True."
+            }
+        ]
+    },
+    "operations": [
+        {
+            "title": "Get API Keys By IAM ID & Account ID",
+            "operation": "get_api_keys_by_iam_id_and_account_id",
+            "description": "Returns the list of API key details for a given service or user IAM ID and account ID.",
+            "annotation": "get_api_keys_by_iam_id_and_account_id",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify the Account ID of the API keys to query.",
+                    "tooltip": "Specify the Account ID of the API keys to query."
+                },
+                {
+                    "title": "IAM ID",
+                    "type": "text",
+                    "name": "iam_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: IBMid-697000AMFB",
+                    "description": "Specify the IAM ID of the API keys to be queried.",
+                    "tooltip": "Specify the IAM ID of the API keys to be queried."
+                },
+                {
+                    "title": "Page Size",
+                    "type": "integer",
+                    "name": "pagesize",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "20",
+                    "placeholder": "eg: Default is 20 items per page.",
+                    "description": "Optional size of a single page. Default is 20 items per page. Valid range is 1 to 100.",
+                    "tooltip": "Optional size of a single page. Default is 20 items per page. Valid range is 1 to 100."
+                },
+                {
+                    "title": "Page Token",
+                    "type": "text",
+                    "name": "pagetoken",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: Default is start with first page.",
+                    "description": "Optional Prev or Next page token returned from a previous query execution. Default is start with first page.",
+                    "tooltip": "Optional Prev or Next page token returned from a previous query execution. Default is start with first page."
+                },
+                {
+                    "title": "Scope",
+                    "type": "select",
+                    "name": "scope",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "entity",
+                    "tooltip": "Optional parameter to define the scope of the queried API keys. Can be 'entity' (default) or 'account'.",
+                    "description": "Optional parameter to define the scope of the queried API keys. Can be 'entity' (default) or 'account'.",
+                    "options": [
+                        "entity",
+                        "account"
+                    ]
+                },
+                {
+                    "title": "Type",
+                    "type": "select",
+                    "name": "type_value",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "description": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "options": [
+                        "user",
+                        "serviceid"
+                    ]
+                },
+                {
+                    "title": "Sort",
+                    "type": "select",
+                    "name": "sort",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "description": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "options": [
+                        "name",
+                        "description",
+                        "created_at",
+                        "modified_at"
+                    ]
+                },
+                {
+                    "title": "Order",
+                    "type": "select",
+                    "name": "order",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "asc",
+                    "tooltip": "Optional sort order, valid values are asc and desc. Default: asc.",
+                    "description": "Optional sort order, valid values are asc and desc. Default: asc.",
+                    "options": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                {
+                    "title": "Include History",
+                    "type": "select",
+                    "name": "include_history",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": false,
+                    "tooltip": "Defines if the entity history is included in the response.",
+                    "description": "Defines if the entity history is included in the response.",
+                    "options": [
+                        true,
+                        false
+                    ]
+                }
+            ],
+            "output_schema": {
+                "limit": "",
+                "first": "",
+                "next": "",
+                "apikeys": {
+                    "id": "",
+                    "entity_tag": "",
+                    "crn": "",
+                    "locked": "",
+                    "disabled": "",
+                    "created_at": "",
+                    "created_by": "",
+                    "modified_at": "",
+                    "support_sessions": "",
+                    "action_when_leaked": "",
+                    "name": "",
+                    "description": "",
+                    "iam_id": "",
+                    "account_id": ""
+                }
+            },
+            "open": false
+        },
+        {
+            "title": "Create An API Key",
+            "operation": "create_an_api_key",
+            "description": "Creates an API key for a UserID or service ID. Users can manage user API keys for themself, or service ID API keys for service IDs they have access to",
+            "annotation": "create_an_api_key",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify the account ID of the API key.",
+                    "tooltip": "Specify the account ID of the API key.."
+                },
+                {
+                    "title": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Name of the API key. ",
+                    "description": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
+                    "placeholder": "e.g: api key name."
+                },
+                {
+                    "title": "IAM ID",
+                    "type": "text",
+                    "name": "iam_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Specify  iam_id that this API key authenticates.",
+                    "description": "Specify the Specify  iam_id that this API key authenticates.",
+                    "placeholder": "e.g: IBMid-697000AMFB"
+                },
+                {
+                    "title": "Description",
+                    "type": "text",
+                    "name": "description",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "Api key description.",
+                    "description": "Optional description of the API key. The 'description' property is only available if a description was provided during a create of an API key.",
+                    "tooltip": "Optional description of the API key. The 'description' property is only available if a description was provided during a create of an API key."
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "entity_tag": "",
+                "crn": "",
+                "locked": "",
+                "disabled": "",
+                "created_at": "",
+                "created_by": "",
+                "modified_at": "",
+                "support_sessions": "",
+                "action_when_leaked": "",
+                "name": "",
+                "description": "",
+                "iam_id": "",
+                "account_id": "",
+                "apikey": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Get API Key Details By Value",
+            "operation": "get_api_key_details_by_value",
+            "description": "Returns the details of an API key by its value.",
+            "annotation": "get_api_key_details_by_value",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "IAM ApiKey",
+                    "type": "text",
+                    "name": "iam_apiKey",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: ApiKey-86b5248c-d972-455e-9d54-47c1fa3b12d3",
+                    "tooltip": "Pass the API key value for this API key.",
+                    "description": "Pass the API key value for this API key."
+                },
+                {
+                    "title": "Include History",
+                    "type": "select",
+                    "name": "include_history",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "false",
+                    "description": "Defines if the entity history is included in the response Default: false.",
+                    "tooltip": "Defines if the entity history is included in the response Default: false.",
+                    "options": [
+                        "true",
+                        "false"
+                    ]
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "entity_tag": "",
+                "crn": "",
+                "locked": "",
+                "disabled": "",
+                "created_at": "",
+                "created_by": "",
+                "modified_at": "",
+                "support_sessions": "",
+                "action_when_leaked": "",
+                "name": "",
+                "description": "",
+                "iam_id": "",
+                "account_id": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Get API Key Details",
+            "operation": "get_api_key_details",
+            "description": "Returns the details of an API key",
+            "annotation": "Get_api_key_details",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Api Key Unique ID",
+                    "type": "text",
+                    "name": "api_key_unique_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "eg: ApiKey-a329b0fd-c8e3-4365-b6c7-43232e79dd61",
+                    "value": "",
+                    "tooltip": "Specify the Unique ID of the API key.",
+                    "description": "Specify the Unique ID of the API key."
+                },
+                {
+                    "title": "Include History",
+                    "type": "select",
+                    "name": "include_history",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "false",
+                    "description": "Defines if the entity history is included in the response Default: false.",
+                    "tooltip": "Defines if the entity history is included in the response Default: false.",
+                    "options": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "title": "Include Activity",
+                    "type": "select",
+                    "name": "include_activity",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "false",
+                    "description": "Defines if the entity's activity is included in the response. Retrieving activity data is an expensive operation, so only request this when needed Default: false.",
+                    "tooltip": "Defines if the entity's activity is included in the response. Retrieving activity data is an expensive operation, so only request this when needed  Default: false.",
+                    "options": [
+                        "true",
+                        "false"
+                    ]
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "entity_tag": "",
+                "crn": "",
+                "locked": "",
+                "disabled": "",
+                "created_at": "",
+                "created_by": "",
+                "modified_at": "",
+                "support_sessions": "",
+                "action_when_leaked": "",
+                "name": "",
+                "description": "",
+                "iam_id": "",
+                "account_id": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Update API Key",
+            "operation": "update_api_key",
+            "description": "Creates an API key for a UserID or service ID.",
+            "annotation": "update_api_key",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Entity Tag",
+                    "type": "text",
+                    "name": "entity_tag",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "eg: 1-b3469b423de70f2f1e70d15da6294bb1",
+                    "value": "",
+                    "tooltip": "Specify the version that you retrieved when reading the API key.",
+                    "description": "Specify the version that you retrieved when reading the API key."
+                },
+                {
+                    "title": "Api Key Unique ID",
+                    "type": "text",
+                    "name": "api_key_unique_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: ApiKey-d7efbfd7-ceaf-4797-bb2d-c314153ea59e",
+                    "tooltip": "Specify the Unique ID of the API key.",
+                    "description": "Specify the Unique ID of the API key."
+                },
+                {
+                    "title": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Name of the API key. ",
+                    "description": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
+                    "placeholder": "e.g: api key name."
+                },
+                {
+                    "title": "Description",
+                    "type": "text",
+                    "name": "description",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: Api key description.",
+                    "description": "Optional description of the API key. The 'description' property is only available if a description was provided during a create of an API key.",
+                    "tooltip": "Optional description of the API key. The 'description' property is only available if a description was provided during a create of an API key."
+                },
+                {
+                    "title": "Support Sessions",
+                    "type": "select",
+                    "name": "support_sessions",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "false",
+                    "tooltip": "Define if the API key supports sessions.",
+                    "description": "Define if the API key supports sessions.",
+                    "options": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "title": "Action When Leaked",
+                    "type": "select",
+                    "name": "action_when_leaked",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "none",
+                    "tooltip": "Select the action to take when API key is leaked, valid values are 'none', 'disable' and 'delete'.",
+                    "description": "Select the action to take when API key is leaked, valid values are 'none', 'disable' and 'delete'.",
+                    "options": [
+                        "none",
+                        "disable",
+                        "delete"
+                    ]
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "entity_tag": "",
+                "crn": "",
+                "locked": "",
+                "disabled": "",
+                "created_at": "",
+                "created_by": "",
+                "modified_at": "",
+                "support_sessions": "",
+                "action_when_leaked": "",
+                "name": "",
+                "description": "",
+                "iam_id": "",
+                "account_id": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Delete API Key",
+            "operation": "delete_api_key",
+            "description": "Deletes an API key.",
+            "annotation": "delete_api_key",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Api Key Unique ID",
+                    "type": "text",
+                    "name": "api_key_unique_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: ApiKey-d7efbfd7-ceaf-4797-bb2d-c314153ea59e",
+                    "tooltip": "Specify the Unique ID of the API key.",
+                    "description": "Specify the Unique ID of the API key."
+                }
+            ],
+            "output_schema": {
+                "Status": "",
+                "API Key Status": "",
+                "API Key ID": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Lock API Key",
+            "operation": "lock_api_key",
+            "description": "Lock an API key by ID.",
+            "annotation": "lock_api_key",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Api Key Unique ID",
+                    "type": "text",
+                    "name": "api_key_unique_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: ApiKey-d7efbfd7-ceaf-4797-bb2d-c314153ea59e",
+                    "tooltip": "Specify the Unique ID of the API key.",
+                    "description": "Specify the Unique ID of the API key."
+                }
+            ],
+            "output_schema": {
+                "Status": "",
+                "API Key Status": "",
+                "API Key ID": ""
+            },
+            "open": false
+        },
+        {
+            "title": "UnLock API Key",
+            "operation": "unlock_api_key",
+            "description": "Un-Lock an API key by ID.",
+            "annotation": "unlock_api_key",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Api Key Unique ID",
+                    "type": "text",
+                    "name": "api_key_unique_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: ApiKey-d7efbfd7-ceaf-4797-bb2d-c314153ea59e",
+                    "tooltip": "Specify the Unique ID of the API key.",
+                    "description": "Specify the Unique ID of the API key."
+                }
+            ],
+            "output_schema": {
+                "Status": "",
+                "API Key Status": "",
+                "API Key ID": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Disable the API key",
+            "operation": "disable_the_api_key",
+            "description": "Disable an API key.",
+            "annotation": "disable_the_api_key",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Api Key Unique ID",
+                    "type": "text",
+                    "name": "api_key_unique_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: ApiKey-d7efbfd7-ceaf-4797-bb2d-c314153ea59e",
+                    "tooltip": "Specify the Unique ID of the API key.",
+                    "description": "Specify the Unique ID of the API key."
+                }
+            ],
+            "output_schema": {
+                "Status": "",
+                "API Key Status": "",
+                "API Key ID": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Enable the API key",
+            "operation": "enable_the_api_key",
+            "description": "Enable an API key.",
+            "annotation": "enable_the_api_key",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Api Key Unique ID",
+                    "type": "text",
+                    "name": "api_key_unique_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: ApiKey-d7efbfd7-ceaf-4797-bb2d-c314153ea59e",
+                    "tooltip": "Specify the Unique ID of the API key.",
+                    "description": "Specify the Unique ID of the API key."
+                }
+            ],
+            "output_schema": {
+                "Status": "",
+                "API Key Status": "",
+                "API Key ID": ""
+            },
+            "open": false
+        },
+        {
+            "title": "List Service IDs By Name",
+            "operation": "list_service_id_by_name",
+            "description": "Returns a list of service IDs. Users can manage user API keys for themself, or service ID API keys for service IDs they have access.",
+            "annotation": "list_service_id_by_name",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify Account ID of the service ID(s) to query.",
+                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                },
+                {
+                    "title": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: Service id name",
+                    "description": "Specify name of the service ID(s) to query. Optional.20 items per page.",
+                    "tooltip": "Specify name of the service ID(s) to query. Optional.20 items per page."
+                },
+                {
+                    "title": "Page Size",
+                    "type": "integer",
+                    "name": "pagesize",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "20",
+                    "placeholder": "eg: Default is 20 items per page.",
+                    "description": "Optional size of a single page. Default is 20 items per page. Valid range is 1 to 100.",
+                    "tooltip": "Optional size of a single page. Default is 20 items per page. Valid range is 1 to 100."
+                },
+                {
+                    "title": "Page Token",
+                    "type": "integer",
+                    "name": "pagetoken",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: Default is start with first page.",
+                    "description": "Optional Prev or Next page token returned from a previous query execution. Default is start with first page.",
+                    "tooltip": "Optional Prev or Next page token returned from a previous query execution. Default is start with first page."
+                },
+                {
+                    "title": "Sort",
+                    "type": "select",
+                    "name": "sort",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "description": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "options": [
+                        "name",
+                        "description",
+                        "created_at",
+                        "modified_at"
+                    ]
+                },
+                {
+                    "title": "Order",
+                    "type": "select",
+                    "name": "order",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "asc",
+                    "tooltip": "Optional sort order, valid values are asc and desc. Default: asc.",
+                    "description": "Optional sort order, valid values are asc and desc. Default: asc.",
+                    "options": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                {
+                    "title": "Include History",
+                    "type": "select",
+                    "name": "include_history",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": false,
+                    "tooltip": "Defines if the entity history is included in the response.",
+                    "description": "Defines if the entity history is included in the response.",
+                    "options": [
+                        true,
+                        false
+                    ]
+                }
+            ],
+            "output_schema": {
+                "offset": "",
+                "limit": "",
+                "first": "",
+                "next": "",
+                "serviceids": {
+                    "id": "",
+                    "iam_id": "",
+                    "entity_tag": "",
+                    "crn": "",
+                    "locked": "",
+                    "created_at": "",
+                    "modified_at": "",
+                    "account_id": "",
+                    "name": "",
+                    "description": "",
+                    "unique_instance_crns": []
+                }
+            },
+            "open": false
+        },
+        {
+            "title": "List Service IDs By Account ID",
+            "operation": "list_service_id_by_account_id",
+            "description": "Returns a list of service IDs. Users can manage user API keys for themself, or service ID API keys for service IDs they have access.",
+            "annotation": "list_service_id_by_account_id",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify Account ID of the service ID(s) to query.",
+                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                }
+            ],
+            "output_schema": {
+                "offset": "",
+                "limit": "",
+                "first": "",
+                "next": "",
+                "serviceids": {
+                    "id": "",
+                    "iam_id": "",
+                    "entity_tag": "",
+                    "crn": "",
+                    "locked": "",
+                    "created_at": "",
+                    "modified_at": "",
+                    "account_id": "",
+                    "name": "",
+                    "description": "",
+                    "unique_instance_crns": []
+                }
+            },
+            "open": false
+        },
+        {
+            "title": "Create A Service ID",
+            "operation": "create_a_service_id",
+            "description": "Creates a service ID for an IBM Cloud account. Users can manage user API keys for themself, or service ID API keys for service IDs.",
+            "annotation": "create_a_service_id",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify Account ID of the service ID(s) to query.",
+                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                },
+                {
+                    "title": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Name of the service id.",
+                    "description": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
+                    "placeholder": "e.g: Name of the service id."
+                },
+                {
+                    "title": "Description",
+                    "type": "text",
+                    "name": "description",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "Description of service id.",
+                    "description": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated.",
+                    "tooltip": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated."
+                },
+                {
+                    "title": "Unique Instance CRNs",
+                    "type": "text",
+                    "name": "unique_instance_crns",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "CRNs seperated by comma.",
+                    "tooltip": "Optional CRNs which point to the services connected to this service ID.",
+                    "description": "Optional CRNs which point to the services connected to this service ID."
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "entity_tag": "",
+                "crn": "",
+                "locked": "",
+                "disabled": "",
+                "created_at": "",
+                "created_by": "",
+                "modified_at": "",
+                "support_sessions": "",
+                "action_when_leaked": "",
+                "name": "",
+                "description": "",
+                "iam_id": "",
+                "account_id": "",
+                "apikey": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Update Service ID",
+            "operation": "update_service_id",
+            "description": "Updates properties of a service ID.",
+            "annotation": "update_service_id",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Service ID",
+                    "type": "text",
+                    "name": "service_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Unique ID of the service ID to be updated.",
+                    "description": "Unique ID of the service ID to be updated.",
+                    "placeholder": "eg: ServiceId-cbe0b869-5ca8-4216-b90d-5a9b04ee76fb"
+                },
+                {
+                    "title": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Name of the service id.",
+                    "description": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
+                    "placeholder": "e.g: Name of the service id."
+                },
+                {
+                    "title": "Description",
+                    "type": "text",
+                    "name": "description",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "Description of service id.",
+                    "description": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated.",
+                    "tooltip": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated."
+                },
+                {
+                    "title": "Unique Instance CRNs",
+                    "type": "text",
+                    "name": "unique_instance_crns",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "CRNs seperated by comma.",
+                    "tooltip": "Optional CRNs which point to the services connected to this service ID.",
+                    "description": "Optional CRNs which point to the services connected to this service ID."
+                },
+                {
+                    "title": "Entity Tag",
+                    "type": "text",
+                    "name": "entity_tag",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "eg: 1-b3469b423de70f2f1e70d15da6294bb1",
+                    "value": "",
+                    "tooltip": "Specify the version that you retrieved when reading the service ID.",
+                    "description": "Specify the version that you retrieved when reading the service ID."
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "iam_id": "",
+                "entity_tag": "",
+                "crn": "",
+                "locked": "",
+                "created_at": "",
+                "modified_at": "",
+                "account_id": "",
+                "name": "",
+                "description": "",
+                "unique_instance_crns": []
+            },
+            "open": false
+        },
+        {
+            "title": "Delete Service ID and Associated API keys",
+            "operation": "delete_service_id_and_associated_api_keys",
+            "description": "Deletes a service ID and all API keys associated to it. Before deleting the service ID, all associated API keys are deleted. ",
+            "annotation": "delete_service_id_and_associated_api_keys",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Service ID",
+                    "type": "text",
+                    "name": "service_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Unique ID of the service ID to be updated.",
+                    "description": "Unique ID of the service ID to be updated.",
+                    "placeholder": "eg: ServiceId-cbe0b869-5ca8-4216-b90d-5a9b04ee76fb"
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "iam_id": "",
+                "entity_tag": "",
+                "crn": "",
+                "locked": "",
+                "created_at": "",
+                "modified_at": "",
+                "account_id": "",
+                "name": "",
+                "description": "",
+                "unique_instance_crns": []
+            },
+            "open": false
+        },
+        {
+            "title": "Lock The Service ID",
+            "operation": "lock_service_id",
+            "description": "Locks a service ID by ID. Users can manage user API keys for themself, or service ID API keys for service IDs ",
+            "annotation": "lock_service_id",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Service ID",
+                    "type": "text",
+                    "name": "service_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Unique ID of the service ID to be updated.",
+                    "description": "Unique ID of the service ID to be updated.",
+                    "placeholder": "eg: ServiceId-cbe0b869-5ca8-4216-b90d-5a9b04ee76fb"
+                }
+            ],
+            "output_schema": {
+                "Status": "",
+                "API Key Status": "",
+                "API Key ID": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Unlock The Service ID",
+            "operation": "unlock_service_id",
+            "description": "Unlocks a service ID by ID. Users can manage user API keys for themself, or service ID API keys for service IDs ",
+            "annotation": "unlock_service_id",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Service ID",
+                    "type": "text",
+                    "name": "service_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Unique ID of the service ID to be updated.",
+                    "description": "Unique ID of the service ID to be updated.",
+                    "placeholder": "eg: ServiceId-cbe0b869-5ca8-4216-b90d-5a9b04ee76fb"
+                }
+            ],
+            "output_schema": {
+                "id": "",
+                "Status": "",
+                "API Key Status": "",
+                "API Key ID": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Get Account Configurations",
+            "operation": "get_account_configurations",
+            "description": "Returns the details of an account's configuration.",
+            "annotation": "get_account_configurations",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify Account ID of the service ID(s) to query.",
+                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                }
+            ],
+            "output_schema": {
+                "account_id": "",
+                "restrict_create_service_id": "",
+                "restrict_create_platform_apikey": "",
+                "entity_tag": "",
+                "mfa": "",
+                "user_mfa": {
+                    "iam_id": "",
+                    "mfa": ""
+                },
+                "session_expiration_in_seconds": "",
+                "session_invalidation_in_seconds": "",
+                "max_sessions_per_identity": "",
+                "system_access_token_expiration_in_seconds": "",
+                "system_refresh_token_expiration_in_seconds": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Update Account Configurations",
+            "operation": "update_account_configurations",
+            "description": "Allows a user to configure settings on their account with regards to MFA, MFA excemption list, session lifetimes, access control for creating new identities, and enforcing IP restrictions on token creation.",
+            "annotation": "update_account_configurations",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Entity Tag",
+                    "type": "text",
+                    "name": "entity_tag",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "eg: 1-b3469b423de70f2f1e70d15da6294bb1",
+                    "value": "",
+                    "tooltip": "Specify the version that you retrieved when reading the API key.",
+                    "description": "Specify the version that you retrieved when reading the API key."
+                },
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify Account ID of the service ID(s) to query.",
+                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                },
+                {
+                    "title": "Restrict Create Service ID",
+                    "type": "select",
+                    "name": "restrict_create_service_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NOT_SET",
+                    "tooltip": "Select the action to take when service id is leaked, valid values are 'RESTRICTED', 'NOT_RESTRICTED' and 'NOT_SET'.",
+                    "description": "Select the action to take when service id is leaked, valid values are 'RESTRICTED', 'NOT_RESTRICTED' and 'NOT_SET'.",
+                    "options": [
+                        "RESTRICTED",
+                        "NOT_RESTRICTED",
+                        "NOT_SET"
+                    ]
+                },
+                {
+                    "title": "Restrict Create Platform Api key",
+                    "type": "select",
+                    "name": "restrict_create_platform_apikey",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NOT_SET",
+                    "tooltip": "Select the action to take when  API keys is leaked, valid values are 'RESTRICTED', 'NOT_RESTRICTED' and 'NOT_SET'.",
+                    "description": "Select the action to take when  API keys is leaked, valid values are 'RESTRICTED', 'NOT_RESTRICTED' and 'NOT_SET'.",
+                    "options": [
+                        "RESTRICTED",
+                        "NOT_RESTRICTED",
+                        "NOT_SET"
+                    ]
+                },
+                {
+                    "title": "Allowed IP Addresses",
+                    "type": "text",
+                    "name": "allowed_ip_addresses",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 1.1.1.1",
+                    "tooltip": "Defines the IP addresses and subnets from which IAM tokens can be created for the account.",
+                    "description": "Defines the IP addresses and subnets from which IAM tokens can be created for the account."
+                },
+                {
+                    "title": "MFA",
+                    "type": "select",
+                    "name": "mfa",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NONE_NO_ROPC",
+                    "tooltip": "Select the action to mfa trait for the account valid values are 'NONE', 'NONE_NO_ROPC', 'TOTP, 'TOTP4ALL','LEVEL1', 'LEVEL2', 'LEVEL3",
+                    "description": "Select the action to mfa trait for the account valid values are 'NONE', 'NONE_NO_ROPC', 'TOTP, 'TOTP4ALL','LEVEL1', 'LEVEL2', 'LEVEL3",
+                    "options": [
+                        "NONE",
+                        "NONE_NO_ROPC",
+                        "TOTP",
+                        "TOTP4ALL",
+                        "LEVEL1",
+                        "LEVEL2",
+                        "LEVEL3"
+                    ]
+                },
+                {
+                    "title": "User MFA",
+                    "type": "text",
+                    "name": "user_mfa",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: IBMid-1234567898",
+                    "tooltip": "Defines users that are exempted from the MFA requirement of the account.",
+                    "description": "Defines users that are exempted from the MFA requirement of the account."
+                },
+                {
+                    "title": "Session Expiration In Seconds",
+                    "type": "text",
+                    "name": "session_expiration_in_seconds",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NOT_SET",
+                    "placeholder": "eg : Any whole number between between '900' and '86400' Default: NOT_SET",
+                    "tooltip": "Defines the session expiration in seconds for the account.",
+                    "description": "Defines the session expiration in seconds for the account."
+                },
+                {
+                    "title": "Session Invalidation In Seconds",
+                    "type": "text",
+                    "name": "session_invalidation_in_seconds",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NOT_SET",
+                    "placeholder": "eg : Any whole number between '900' and '7200' Default: NOT_SET",
+                    "tooltip": "Defines the period of time in seconds in which a session will be invalidated due to inactivity. ",
+                    "description": "Defines the period of time in seconds in which a session will be invalidated due to inactivity. "
+                },
+                {
+                    "title": "Max Sessions Per Identity",
+                    "type": "text",
+                    "name": "max_sessions_per_identity",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NOT_SET",
+                    "placeholder": "eg : Any whole number greater than 0 Default: NOT_SET ",
+                    "tooltip": "Defines the max allowed sessions per identity required by the account.",
+                    "description": "Defines the max allowed sessions per identity required by the account."
+                },
+                {
+                    "title": "System Access Token Expiration In Seconds",
+                    "type": "text",
+                    "name": "system_access_token_expiration_in_seconds",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NOT_SET",
+                    "placeholder": "eg :Any whole number between '900' and '3600' Default: NOT_SET",
+                    "tooltip": "Defines the access token expiration in seconds.",
+                    "description": "Defines the access token expiration in seconds."
+                },
+                {
+                    "title": "System Refresh Token Expiration In Seconds",
+                    "type": "text",
+                    "name": "system_refresh_token_expiration_in_seconds.",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "NOT_SET",
+                    "placeholder": "Any whole number between '900' and '259200' Default: NOT_SET",
+                    "tooltip": "Defines the refresh token expiration in seconds.",
+                    "description": "Defines the refresh token expiration in seconds."
+                }
+            ],
+            "output_schema": {
+                "account_id": "",
+                "restrict_create_service_id": "",
+                "restrict_create_platform_apikey": "",
+                "entity_tag": "",
+                "mfa": "",
+                "user_mfa": {
+                    "iam_id": "",
+                    "mfa": ""
+                },
+                "session_expiration_in_seconds": "",
+                "session_invalidation_in_seconds": "",
+                "max_sessions_per_identity": "",
+                "system_access_token_expiration_in_seconds": "",
+                "system_refresh_token_expiration_in_seconds": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Trigger Activity Report For The Account",
+            "operation": "trigger_activity_report_for_the_account",
+            "description": "Trigger activity report for the account by specifying the account ID. It can take a few minutes to generate the report for retrieval.",
+            "annotation": "trigger_activity_report_for_the_account",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify Account ID of the service ID(s) to query.",
+                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                },
+                {
+                    "title": "Type",
+                    "type": "text",
+                    "name": "type",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "inactive",
+                    "placeholder": "Default: inactive",
+                    "description": "Optional the supported value is 'inactive'. List all identities that have not authenticated within the time indicated by duration.",
+                    "tooltip": "Optional the supported value is 'inactive'. List all identities that have not authenticated within the time indicated by duration."
+                },
+                {
+                    "title": "Duration",
+                    "type": "text",
+                    "name": "duration",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "720",
+                    "placeholder": "Default: 720",
+                    "description": "Optional duration of the report. The supported unit of duration is hours.",
+                    "tooltip": "Optional duration of the report. The supported unit of duration is hours."
+                }
+            ],
+            "output_schema": {
+                "reference": ""
+            },
+            "open": false
+        },
+        {
+            "title": "Get Activity Report For The Account",
+            "operation": "get_activity_report_for_the_account",
+            "description": "Get activity report for the account by specifying the account ID and the reference that is generated by triggering the report. Reports older than a day are deleted when generating a new report.",
+            "annotation": "get_activity_report_for_the_account",
+            "category": "investigation",
+            "parameters": [
+                {
+                    "title": "Account ID",
+                    "type": "text",
+                    "name": "account_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
+                    "description": "Specify Account ID of the service ID(s) to query.",
+                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                },
+                {
+                    "title": "Reference",
+                    "type": "text",
+                    "name": "reference",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "latest",
+                    "placeholder": "Default: latest",
+                    "description": "Specify reference for the report to be generated, You can use 'latest' to get the latest report for the given account.",
+                    "tooltip": "Specify reference for the report to be generated, You can use 'latest' to get the latest report for the given account."
+                }
+            ],
+            "output_schema": {
+                "created_by": "",
+                "reference": "",
+                "report_duration": "",
+                "report_start_time": "",
+                "report_end_time": "",
+                "users": {
+                    "iam_id": "",
+                    "name": "",
+                    "username": "",
+                    "email": "",
+                    "last_authn": ""
+                },
+                "serviceids": {
+                    "id": "",
+                    "name": "",
+                    "last_authn": ""
+                },
+                "profiles": {
+                    "id": "",
+                    "name": "",
+                    "last_authn": ""
+                },
+                "apikeys": [
+                    {
+                        "id": "",
+                        "name": "",
+                        "type": "",
+                        "serviceid": {
+                            "id": "",
+                            "name": ""
+                        },
+                        "last_authn": ""
+                    },
+                    {
+                        "id": "",
+                        "name": "",
+                        "type": "",
+                        "user": {
+                            "iam_id": "",
+                            "name": "",
+                            "username": "",
+                            "email": ""
+                        },
+                        "last_authn": ""
+                    }
+                ]
+            },
+            "open": false
+        }
+    ]
+}
