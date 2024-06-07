@@ -29,6 +29,7 @@ class IBM:
         else:
             self.host = "https://{0}".format(self.host)
 
+
     def convert_ts_epoch(self, ts):
         datetime_object = datetime.strptime(ctime(ts), "%a %b %d %H:%M:%S %Y")
         return datetime_object.timestamp()

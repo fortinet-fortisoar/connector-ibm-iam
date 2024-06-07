@@ -22,7 +22,8 @@
                 "value": "",
                 "tooltip": "Specify the URL of the IBM IAM server to connect and perform automated operations.",
                 "description": "Specify the URL of the IBM IAM server to connect and perform automated operations.",
-                "placeholder": "e.g: https://iam.cloud.ibm.com or iam.cloud.ibm.com"
+                "placeholder": "e.g: https://iam.cloud.ibm.com or iam.cloud.ibm.com",
+                "value":"https://iam.cloud.ibm.com"
             },
             {
                 "title": "API key",
@@ -51,10 +52,10 @@
     },
     "operations": [
         {
-            "title": "Get API Keys By IAM ID & Account ID",
-            "operation": "get_api_keys_by_iam_id_and_account_id",
-            "description": "Returns the list of API key details for a given service or user IAM ID and account ID.",
-            "annotation": "get_api_keys_by_iam_id_and_account_id",
+            "title": "Get API Keys",
+            "operation": "get_api_keys",
+            "description": "Retrieves the list of API key details for a given service or user IAM ID and account ID.",
+            "annotation": "get_api_keys",
             "category": "investigation",
             "parameters": [
                 {
@@ -113,8 +114,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "entity",
-                    "tooltip": "Optional parameter to define the scope of the queried API keys. Can be 'entity' (default) or 'account'.",
-                    "description": "Optional parameter to define the scope of the queried API keys. Can be 'entity' (default) or 'account'.",
+                    "tooltip": "Select the scope of the queried API keys. Can be 'entity' (default) or 'account'.",
+                    "description": "Select the scope of the queried API keys. Can be 'entity' (default) or 'account'.",
                     "options": [
                         "entity",
                         "account"
@@ -128,8 +129,8 @@
                     "visible": true,
                     "editable": true,
                     "value": null,
-                    "tooltip": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
-                    "description": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "tooltip": "Select the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "description": "Select the type of the queried API keys. Can be 'user' or 'serviceid'.",
                     "options": [
                         "user",
                         "serviceid"
@@ -143,8 +144,8 @@
                     "visible": true,
                     "editable": true,
                     "value": null,
-                    "tooltip": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
-                    "description": "Optional parameter to filter the type of the queried API keys. Can be 'user' or 'serviceid'.",
+                    "tooltip": "Select the following input parameter to sort the API keys.",
+                    "description": "Select the following input parameter to sort the API keys.",
                     "options": [
                         "name",
                         "description",
@@ -160,8 +161,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "asc",
-                    "tooltip": "Optional sort order, valid values are asc and desc. Default: asc.",
-                    "description": "Optional sort order, valid values are asc and desc. Default: asc.",
+                    "tooltip": "Select the sort order, valid values are asc and desc. Default: asc.",
+                    "description": "Select the sort order, valid values are asc and desc. Default: asc.",
                     "options": [
                         "asc",
                         "desc"
@@ -169,18 +170,14 @@
                 },
                 {
                     "title": "Include History",
-                    "type": "select",
+                    "type": "checkbox",
                     "name": "include_history",
                     "required": false,
                     "visible": true,
                     "editable": true,
                     "value": false,
-                    "tooltip": "Defines if the entity history is included in the response.",
-                    "description": "Defines if the entity history is included in the response.",
-                    "options": [
-                        true,
-                        false
-                    ]
+                    "tooltip": "If this parameter is checked, then the entity history is included in the response.",
+                    "description": "If this parameter is checked, then the entity history is included in the response."
                 }
             ],
             "output_schema": {
@@ -233,8 +230,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Name of the API key. ",
-                    "description": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
+                    "tooltip": "Specify the name of the API key if it is not checked for uniqueness. Therefore, multiple names with the same value can exist. Access is done via the UUID of the API key.",
+                    "description": "Specify the name of the API key if it is not checked for uniqueness. Therefore, multiple names with the same value can exist. Access is done via the UUID of the API key.",
                     "placeholder": "e.g: api key name."
                 },
                 {
@@ -245,8 +242,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Specify  iam_id that this API key authenticates.",
-                    "description": "Specify the Specify  iam_id that this API key authenticates.",
+                    "tooltip": "c the IAM ID that the API key authenticates",
+                    "description": "Specify the IAM ID that the API key authenticates",
                     "placeholder": "e.g: IBMid-697000AMFB"
                 },
                 {
@@ -258,8 +255,8 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "Api key description.",
-                    "description": "Optional description of the API key. The 'description' property is only available if a description was provided during a create of an API key.",
-                    "tooltip": "Optional description of the API key. The 'description' property is only available if a description was provided during a create of an API key."
+                    "description": "Specify the description of the API key. The 'description' property is only available if a description was provided during a create of an API key.",
+                    "tooltip": "Specify the description of the API key. The 'description' property is only available if a description was provided during a create of an API key."
                 }
             ],
             "output_schema": {
@@ -284,7 +281,7 @@
         {
             "title": "Get API Key Details By Value",
             "operation": "get_api_key_details_by_value",
-            "description": "Returns the details of an API key by its value.",
+            "description": "Retrieves the details of an API key by its value.",
             "annotation": "get_api_key_details_by_value",
             "category": "investigation",
             "parameters": [
@@ -297,23 +294,19 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "eg: ApiKey-86b5248c-d972-455e-9d54-47c1fa3b12d3",
-                    "tooltip": "Pass the API key value for this API key.",
-                    "description": "Pass the API key value for this API key."
+                    "tooltip": "Provide value of the API key.",
+                    "description": "Provide value of the API key"
                 },
                 {
                     "title": "Include History",
-                    "type": "select",
+                    "type": "checkbox",
                     "name": "include_history",
                     "required": false,
                     "visible": true,
                     "editable": true,
                     "value": "false",
-                    "description": "Defines if the entity history is included in the response Default: false.",
-                    "tooltip": "Defines if the entity history is included in the response Default: false.",
-                    "options": [
-                        "true",
-                        "false"
-                    ]
+                    "tooltip": "If this parameter is selected, the entity history will be included in the response. Default: false."
+
                 }
             ],
             "output_schema": {
@@ -337,7 +330,7 @@
         {
             "title": "Get API Key Details",
             "operation": "get_api_key_details",
-            "description": "Returns the details of an API key",
+            "description": "Retrieves the details information of an API key",
             "annotation": "Get_api_key_details",
             "category": "investigation",
             "parameters": [
@@ -355,18 +348,14 @@
                 },
                 {
                     "title": "Include History",
-                    "type": "select",
+                    "type": "checkbox",
                     "name": "include_history",
                     "required": false,
                     "visible": true,
                     "editable": true,
                     "value": "false",
-                    "description": "Defines if the entity history is included in the response Default: false.",
-                    "tooltip": "Defines if the entity history is included in the response Default: false.",
-                    "options": [
-                        "true",
-                        "false"
-                    ]
+                    "description": "If this parameter is selected, the entity history will be included in the response. Default: false.",
+                    "tooltip": "If this parameter is selected, the entity history will be included in the response. Default: false."
                 },
                 {
                     "title": "Include Activity",
@@ -376,12 +365,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "false",
-                    "description": "Defines if the entity's activity is included in the response. Retrieving activity data is an expensive operation, so only request this when needed Default: false.",
-                    "tooltip": "Defines if the entity's activity is included in the response. Retrieving activity data is an expensive operation, so only request this when needed  Default: false.",
-                    "options": [
-                        "true",
-                        "false"
-                    ]
+                    "description": "If this parameter is selected, the entity's activity is included in the response. Retrieving activity data is an expensive operation, so only request this when needed Default: false.",
+                    "tooltip": "If this parameter is selected, the entity's activity is included in the response. Retrieving activity data is an expensive operation, so only request this when needed  Default: false."
                 }
             ],
             "output_schema": {
@@ -405,7 +390,7 @@
         {
             "title": "Update API Key",
             "operation": "update_api_key",
-            "description": "Creates an API key for a UserID or service ID.",
+            "description": "Updates an API key using a UserID or service ID.",
             "annotation": "update_api_key",
             "category": "investigation",
             "parameters": [
@@ -731,18 +716,14 @@
                 },
                 {
                     "title": "Include History",
-                    "type": "select",
+                    "type": "checkbox",
                     "name": "include_history",
                     "required": false,
                     "visible": true,
                     "editable": true,
                     "value": false,
-                    "tooltip": "Defines if the entity history is included in the response.",
-                    "description": "Defines if the entity history is included in the response.",
-                    "options": [
-                        true,
-                        false
-                    ]
+                     "tooltip": "If this parameter is checked, then the entity history is included in the response.",
+                    "description": "If this parameter is checked, then the entity history is included in the response."
                 }
             ],
             "output_schema": {
@@ -767,9 +748,9 @@
             "open": false
         },
         {
-            "title": "List Service IDs By Account ID",
+            "title": "List Service IDs",
             "operation": "list_service_id_by_account_id",
-            "description": "Returns a list of service IDs. Users can manage user API keys for themself, or service ID API keys for service IDs they have access.",
+            "description": "Retrieves a list of service IDs. Users can manage user API keys for themself, or service ID API keys for service IDs they have access.",
             "annotation": "list_service_id_by_account_id",
             "category": "investigation",
             "parameters": [
@@ -834,7 +815,7 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Name of the service id.",
+                    "tooltip": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
                     "description": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
                     "placeholder": "e.g: Name of the service id."
                 },
@@ -847,8 +828,8 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "Description of service id.",
-                    "description": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated.",
-                    "tooltip": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated."
+                    "description": "Specify the description of the service ID to create.",
+                    "tooltip": "Specify the description of the service ID to create."
                 },
                 {
                     "title": "Unique Instance CRNs",
@@ -859,8 +840,8 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "CRNs seperated by comma.",
-                    "tooltip": "Optional CRNs which point to the services connected to this service ID.",
-                    "description": "Optional CRNs which point to the services connected to this service ID."
+                    "tooltip": "Provides CSV list of the CRNs which point to the services connected to this service ID.",
+                    "description": "Provides CSV list of the CRNs which point to the services connected to this service ID."
                 }
             ],
             "output_schema": {
@@ -909,7 +890,7 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Name of the service id.",
+                    "tooltip": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
                     "description": "Specify the name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.",
                     "placeholder": "e.g: Name of the service id."
                 },
@@ -922,8 +903,8 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "Description of service id.",
-                    "description": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated.",
-                    "tooltip": "Optional description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated."
+                    "description": "Specify the description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated.",
+                    "tooltip": "Specify the description of the service ID to update. If specified an empty description will clear the description of the service ID. If an non empty value is provided the service ID will be updated."
                 },
                 {
                     "title": "Unique Instance CRNs",
@@ -933,9 +914,9 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "placeholder": "CRNs seperated by comma.",
-                    "tooltip": "Optional CRNs which point to the services connected to this service ID.",
-                    "description": "Optional CRNs which point to the services connected to this service ID."
+                    "placeholder": "CRNs separated by comma.",
+                    "tooltip": "Provides CSV list of CRNs which point to the services connected to this service ID.",
+                    "description": "Provides CSV list of CRNs which point to the services connected to this service ID."
                 },
                 {
                     "title": "Entity Tag",
@@ -1015,8 +996,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Unique ID of the service ID to be updated.",
-                    "description": "Unique ID of the service ID to be updated.",
+                    "tooltip": "Specify the Unique ID of the service ID to be locked.",
+                    "description": "specify the Unique ID of the service ID to be locked.",
                     "placeholder": "eg: ServiceId-cbe0b869-5ca8-4216-b90d-5a9b04ee76fb"
                 }
             ],
@@ -1042,8 +1023,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Unique ID of the service ID to be updated.",
-                    "description": "Unique ID of the service ID to be updated.",
+                    "tooltip": "Specify the Unique ID of the service ID to be Unlock.",
+                    "description": "Specify the Unique ID of the service ID to be Unlock.",
                     "placeholder": "eg: ServiceId-cbe0b869-5ca8-4216-b90d-5a9b04ee76fb"
                 }
             ],
@@ -1058,7 +1039,7 @@
         {
             "title": "Get Account Configurations",
             "operation": "get_account_configurations",
-            "description": "Returns the details of an account's configuration.",
+            "description": "Retrieves the details of an account's configuration.",
             "annotation": "get_account_configurations",
             "category": "investigation",
             "parameters": [
@@ -1071,8 +1052,8 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
-                    "description": "Specify Account ID of the service ID(s) to query.",
-                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                    "description": "specify the Account ID of the service ID(s) to obtain account configuration-related information",
+                    "tooltip": "specify the Account ID of the service ID(s) to obtain account configuration-related information"
                 }
             ],
             "output_schema": {
@@ -1096,7 +1077,7 @@
         {
             "title": "Update Account Configurations",
             "operation": "update_account_configurations",
-            "description": "Allows a user to configure settings on their account with regards to MFA, MFA excemption list, session lifetimes, access control for creating new identities, and enforcing IP restrictions on token creation.",
+            "description": "Allows a user to configure settings on their account with regards to MFA, MFA exempted list, session lifetimes, access control for creating new identities, and enforcing IP restrictions on token creation.",
             "annotation": "update_account_configurations",
             "category": "investigation",
             "parameters": [
@@ -1109,8 +1090,8 @@
                     "editable": true,
                     "placeholder": "eg: 1-b3469b423de70f2f1e70d15da6294bb1",
                     "value": "",
-                    "tooltip": "Specify the version that you retrieved when reading the API key.",
-                    "description": "Specify the version that you retrieved when reading the API key."
+                    "tooltip": "Specify the version that you want to update.",
+                    "description": "Specify the version that you want to update."
                 },
                 {
                     "title": "Account ID",
@@ -1121,8 +1102,8 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "eg: 3bbddue14b3846gca96d12cdcfdad275",
-                    "description": "Specify Account ID of the service ID(s) to query.",
-                    "tooltip": "Specify Account ID of the service ID(s) to query."
+                    "description": "Specify Account ID of the service ID(s) to update the account configurations.",
+                    "tooltip": "Specify Account ID of the service ID(s) to update the account configurations."
                 },
                 {
                     "title": "Restrict Create Service ID",
@@ -1197,8 +1178,8 @@
                     "editable": true,
                     "value": "",
                     "placeholder": "eg: IBMid-1234567898",
-                    "tooltip": "Defines users that are exempted from the MFA requirement of the account.",
-                    "description": "Defines users that are exempted from the MFA requirement of the account."
+                    "tooltip": "Provides a users that are exempted from the MFA requirement of the account.",
+                    "description": "Provides a users that are exempted from the MFA requirement of the account."
                 },
                 {
                     "title": "Session Expiration In Seconds",
@@ -1209,8 +1190,8 @@
                     "editable": true,
                     "value": "NOT_SET",
                     "placeholder": "eg : Any whole number between between '900' and '86400' Default: NOT_SET",
-                    "tooltip": "Defines the session expiration in seconds for the account.",
-                    "description": "Defines the session expiration in seconds for the account."
+                    "tooltip": "Provides the session expiration in seconds for the account.",
+                    "description": "Provides the session expiration in seconds for the account."
                 },
                 {
                     "title": "Session Invalidation In Seconds",
@@ -1221,8 +1202,8 @@
                     "editable": true,
                     "value": "NOT_SET",
                     "placeholder": "eg : Any whole number between '900' and '7200' Default: NOT_SET",
-                    "tooltip": "Defines the period of time in seconds in which a session will be invalidated due to inactivity. ",
-                    "description": "Defines the period of time in seconds in which a session will be invalidated due to inactivity. "
+                    "tooltip": "Provides the period of time in seconds in which a session will be invalidated due to inactivity.",
+                    "description": "Provides the period of time in seconds in which a session will be invalidated due to inactivity."
                 },
                 {
                     "title": "Max Sessions Per Identity",
@@ -1233,8 +1214,8 @@
                     "editable": true,
                     "value": "NOT_SET",
                     "placeholder": "eg : Any whole number greater than 0 Default: NOT_SET ",
-                    "tooltip": "Defines the max allowed sessions per identity required by the account.",
-                    "description": "Defines the max allowed sessions per identity required by the account."
+                    "tooltip": "Provides the max allowed sessions per identity required by the account.",
+                    "description": "Provides the max allowed sessions per identity required by the account."
                 },
                 {
                     "title": "System Access Token Expiration In Seconds",
@@ -1245,8 +1226,8 @@
                     "editable": true,
                     "value": "NOT_SET",
                     "placeholder": "eg :Any whole number between '900' and '3600' Default: NOT_SET",
-                    "tooltip": "Defines the access token expiration in seconds.",
-                    "description": "Defines the access token expiration in seconds."
+                    "tooltip": "Provides the access token expiration in seconds.",
+                    "description": "Provides the access token expiration in seconds."
                 },
                 {
                     "title": "System Refresh Token Expiration In Seconds",
@@ -1257,8 +1238,8 @@
                     "editable": true,
                     "value": "NOT_SET",
                     "placeholder": "Any whole number between '900' and '259200' Default: NOT_SET",
-                    "tooltip": "Defines the refresh token expiration in seconds.",
-                    "description": "Defines the refresh token expiration in seconds."
+                    "tooltip": "Provides the refresh token expiration in seconds.",
+                    "description": "Provides the refresh token expiration in seconds."
                 }
             ],
             "output_schema": {
@@ -1280,7 +1261,7 @@
             "open": false
         },
         {
-            "title": "Trigger Activity Report For The Account",
+            "title": "Trigger Activity Report",
             "operation": "trigger_activity_report_for_the_account",
             "description": "Trigger activity report for the account by specifying the account ID. It can take a few minutes to generate the report for retrieval.",
             "annotation": "trigger_activity_report_for_the_account",
@@ -1329,7 +1310,7 @@
             "open": false
         },
         {
-            "title": "Get Activity Report For The Account",
+            "title": "Get Activity Report",
             "operation": "get_activity_report_for_the_account",
             "description": "Get activity report for the account by specifying the account ID and the reference that is generated by triggering the report. Reports older than a day are deleted when generating a new report.",
             "annotation": "get_activity_report_for_the_account",

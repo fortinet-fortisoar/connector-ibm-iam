@@ -18,8 +18,8 @@
           "uuid": "df51273b-a6f9-4de3-80f1-0a64663b45fb",
           "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
           "triggerLimit": null,
-          "description": "Returns the list of API key details for a given service or user IAM ID and account ID.",
-          "name": "Get API Keys By IAM ID & Account ID",
+          "description": "Retrieves the list of API key details for a given service or user IAM ID and account ID.",
+          "name": "Get API Keys",
           "tag": "#IBM IAM",
           "recordTags": [
             "Ibm",
@@ -40,7 +40,7 @@
               "status": null,
               "arguments": {
                 "route": "6bac2c74-cf0b-4ab5-be08-dc3343d7510d",
-                "title": "IBM IAM: Get API Keys By IAM ID & Account ID",
+                "title": "IBM IAM: Get API Keys",
                 "resources": [
                   "alerts"
                 ],
@@ -61,7 +61,7 @@
             {
               "uuid": "edad4be1-5461-4d83-9851-94341ef47a03",
               "@type": "WorkflowStep",
-              "name": "Get API Keys By IAM ID & Account ID",
+              "name": "Get API Keys",
               "description": null,
               "status": null,
               "arguments": {
@@ -80,8 +80,8 @@
                 },
                 "version": "1.0.0",
                 "connector": "ibm-iam",
-                "operation": "get_api_keys_by_iam_id_and_account_id",
-                "operationTitle": "Get API Keys By IAM ID & Account ID",
+                "operation": "get_api_keys",
+                "operationTitle": "Get API Keys",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -97,7 +97,7 @@
               "uuid": "f46790fe-8a79-4393-80e0-87e63bf6faa0",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get API Keys By IAM ID & Account ID",
+              "name": "Start-> Get API Keys",
               "sourceStep": "/api/3/workflow_steps/bf370e7f-59e9-4c3f-904f-bc13e2e03917",
               "targetStep": "/api/3/workflow_steps/edad4be1-5461-4d83-9851-94341ef47a03"
             }
@@ -193,7 +193,7 @@
           "uuid": "a61593f7-8503-4c89-b0c0-d2f9e8346955",
           "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
           "triggerLimit": null,
-          "description": "Returns the details of an API key by its value.",
+          "description": "Retrieves the details of an API key by its value.",
           "name": "Get API Key Details By Value",
           "tag": "#IBM IAM",
           "recordTags": [
@@ -360,7 +360,7 @@
           "uuid": "17dbc874-bc1c-4d86-80de-d0f83d48458d",
           "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
           "triggerLimit": null,
-          "description": "Creates an API key for a UserID or service ID.",
+          "description": "Updates an API key using a UserID or service ID.",
           "name": "Update API Key",
           "tag": "#IBM IAM",
           "recordTags": [
@@ -988,7 +988,7 @@
             {
               "uuid": "c03fa8c3-9eb4-447b-a20f-ee4bb010f9fe",
               "@type": "WorkflowStep",
-              "name": "List Service IDs By Account ID",
+              "name": "List Service IDs",
               "description": null,
               "status": null,
               "arguments": {
@@ -1000,7 +1000,7 @@
                 "version": "1.0.0",
                 "connector": "ibm-iam",
                 "operation": "list_service_id_by_account_id",
-                "operationTitle": "List Service IDs By Account ID",
+                "operationTitle": "List Service IDs",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -1016,7 +1016,7 @@
               "uuid": "157f8bef-358e-47b2-8e7b-2cf4aac340a4",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> List Service IDs By Account ID",
+              "name": "Start-> List Service IDs",
               "sourceStep": "/api/3/workflow_steps/7a25fe79-6d18-4e44-9681-ef951dbcf7a4",
               "targetStep": "/api/3/workflow_steps/c03fa8c3-9eb4-447b-a20f-ee4bb010f9fe"
             }
@@ -1620,7 +1620,7 @@
           "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
           "triggerLimit": null,
           "description": "Trigger activity report for the account by specifying the account ID. It can take a few minutes to generate the report for retrieval.",
-          "name": "Trigger Activity Report For The Account",
+          "name": "Trigger Activity Repor",
           "tag": "#IBM IAM",
           "recordTags": [
             "Ibm",
@@ -1641,7 +1641,7 @@
               "status": null,
               "arguments": {
                 "route": "49e4f136-bf71-4cc7-8ea8-ea59f92b0a34",
-                "title": "IBM IAM: Trigger Activity Report For The Account",
+                "title": "IBM IAM: Trigger Activity Report",
                 "resources": [
                   "alerts"
                 ],
@@ -1662,7 +1662,7 @@
             {
               "uuid": "9da0236b-0fea-4297-91ef-921f210bc172",
               "@type": "WorkflowStep",
-              "name": "Trigger Activity Report For The Account",
+              "name": "Trigger Activity Report",
               "description": null,
               "status": null,
               "arguments": {
@@ -1676,7 +1676,7 @@
                 "version": "1.0.0",
                 "connector": "ibm-iam",
                 "operation": "trigger_activity_report_for_the_account",
-                "operationTitle": "Trigger Activity Report For The Account",
+                "operationTitle": "Trigger Activity Report",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -1692,7 +1692,7 @@
               "uuid": "cf5e4d52-9e1d-4fce-b08d-ae192ec237eb",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Trigger Activity Report For The Account",
+              "name": "Start-> Trigger Activity Report",
               "sourceStep": "/api/3/workflow_steps/4ec36aa5-b125-46df-b08b-d43853452f70",
               "targetStep": "/api/3/workflow_steps/9da0236b-0fea-4297-91ef-921f210bc172"
             }
@@ -1704,7 +1704,7 @@
           "collection": "/api/3/workflow_collections/7eadda1e-de7c-4efd-8bb5-cf1c26d823bb",
           "triggerLimit": null,
           "description": "Get activity report for the account by specifying the account ID and the reference that is generated by triggering the report. Reports older than a day are deleted when generating a new report.",
-          "name": "Get Activity Report For The Account",
+          "name": "Get Activity Report",
           "tag": "#IBM IAM",
           "recordTags": [
             "Ibm",
@@ -1725,7 +1725,7 @@
               "status": null,
               "arguments": {
                 "route": "4e4c2aaf-373d-4e8d-97a3-018c2cf5c08e",
-                "title": "IBM IAM: Get Activity Report For The Account",
+                "title": "IBM IAM: Get Activity Report",
                 "resources": [
                   "alerts"
                 ],
@@ -1746,7 +1746,7 @@
             {
               "uuid": "a9348553-a4d8-4e80-9da3-9a85fd5e8f33",
               "@type": "WorkflowStep",
-              "name": "Get Activity Report For The Account",
+              "name": "Get Activity Report",
               "description": null,
               "status": null,
               "arguments": {
@@ -1759,7 +1759,7 @@
                 "version": "1.0.0",
                 "connector": "ibm-iam",
                 "operation": "get_activity_report_for_the_account",
-                "operationTitle": "Get Activity Report For The Account",
+                "operationTitle": "Get Activity Report",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -1775,7 +1775,7 @@
               "uuid": "756c8ec9-0731-46fb-9bc4-7e60ac47ac4a",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get Activity Report For The Account",
+              "name": "Start-> Get Activity Report",
               "sourceStep": "/api/3/workflow_steps/4ece3b15-1c8a-4751-a3ce-abf702858c6e",
               "targetStep": "/api/3/workflow_steps/a9348553-a4d8-4e80-9da3-9a85fd5e8f33"
             }

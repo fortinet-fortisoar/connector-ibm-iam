@@ -470,7 +470,7 @@ def get_activity_report_for_the_account(config, params, connector_info):
 
 operations = {
     # API keys Operations 
-    'get_api_keys_by_iam_id_and_account_id': get_api_keys_by_iam_id_and_account_id,
+    'get_api_keys': get_api_keys_by_iam_id_and_account_id,
     'create_an_api_key': create_an_api_key,
     'get_api_key_details_by_value': get_api_key_details_by_value,
     'get_api_key_details': get_api_key_details,
