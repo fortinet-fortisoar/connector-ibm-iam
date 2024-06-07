@@ -9,7 +9,7 @@
     "cs_compatible": true,
     "cs_approved": false,
     "category": "Identity and Access Management",
-    "help_online": "",
+    "help_online": "https://github.com/fortinet-fortisoar/connector-ibm-iam/blob/release/1.0.0/docs/IbmIamConnectorDoc.md",
     "configuration": {
         "fields": [
             {
